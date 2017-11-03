@@ -11,17 +11,20 @@ import java.util.List;
 
 import android.content.Context;
 import android.util.Log;
+//fixe four
+// change class to package private
+//fix five
+//change Context ctx to be final
+class TweetsFileManager {
 
-public class TweetsFileManager {
+	private final Context ctx;
 
-	private Context ctx;
-
-	public TweetsFileManager(Context ctx) {
+	TweetsFileManager(Context ctx) {
 		this.ctx = ctx;
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<NormalLonelyTweet> loadTweets() {
+	List<NormalLonelyTweet> loadTweets() {
 		List<NormalLonelyTweet> tweets = new ArrayList<NormalLonelyTweet>();
 
 		try {
@@ -47,7 +50,7 @@ public class TweetsFileManager {
 		return tweets;
 	}
 
-	public void saveTweets(List<NormalLonelyTweet> tweets) {
+	void saveTweets(List<NormalLonelyTweet> tweets) {
 		try {
 			FileOutputStream fos = ctx.openFileOutput("file.sav", 0);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);

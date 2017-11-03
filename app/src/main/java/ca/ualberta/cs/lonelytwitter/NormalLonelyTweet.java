@@ -3,22 +3,28 @@ package ca.ualberta.cs.lonelytwitter;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
-
-public class NormalLonelyTweet implements Serializable {
+//fixed one
+// declaration access redundancy
+//fixed two
+// change some public method to private
+//fixed three
+// change some public class to package private
+// change some protected variable to private
+class NormalLonelyTweet implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	protected Date tweetDate;
-	protected String tweetBody;
+	private Date tweetDate;
+	private String tweetBody;
 
 	public NormalLonelyTweet() {
 	}
 
-	public NormalLonelyTweet(String text, Date date) {
+	NormalLonelyTweet(String text, Date date) {
 		this.tweetDate = date;
 		this.tweetBody = text;
 	}
 
-	public Date getTweetDate() {
+	private Date getTweetDate() {
 		return tweetDate;
 	}
 
@@ -26,7 +32,7 @@ public class NormalLonelyTweet implements Serializable {
 		this.tweetDate = tweetDate;
 	}
 
-	public String getTweetBody() {
+	private String getTweetBody() {
 		return tweetBody;
 	}
 
@@ -45,13 +51,19 @@ public class NormalLonelyTweet implements Serializable {
 		tweetBody = (String) in.readObject();
 	}
 
-	public boolean isValid() {
+	boolean isValid() {
+		// fix one
+		//redundant if statement, it can be simplifed
+		/*
 		if (tweetBody.trim().length() == 0
 				|| tweetBody.trim().length() > 10) {
 			return false;
 		}
 
 		return true;
+		*/
+
+		return !(tweetBody.trim().length() == 0 || tweetBody.trim().length() > 10);
 	}
 
 	@Override
